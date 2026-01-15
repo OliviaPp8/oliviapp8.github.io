@@ -3,9 +3,8 @@ import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const tweets = [
-  'https://x.com/0xOliviaPp/status/2009544064929345786',
   'https://x.com/0xOliviaPp/status/2002287517010440391',
-  'https://x.com/0xOliviaPp/status/2002633577851461772',
+  'https://x.com/0xOliviaPp/status/2009544064929345786',
 ];
 
 const VoiceCloneContent = () => {

@@ -7,6 +7,7 @@ interface Project {
   titleZh: string;
   url: string;
   size: 'large' | 'medium' | 'small';
+  image: string;
   isInternal?: boolean;
 }
 
@@ -16,43 +17,50 @@ const projects: Project[] = [
     titleZh: 'AI 算法交易机器人',
     url: 'https://arcane-ai.net/',
     size: 'large',
+    image: '/arcane.png',
   },
   {
     title: 'Gold vs Bitcoin',
     titleZh: '黄金 vs 比特币',
     url: 'https://btc-vs-gold.lovable.app/',
     size: 'medium',
+    image: '/gold-vs-btc.png',
   },
   {
     title: 'BTC Buy/Sell Indicator',
     titleZh: 'BTC 买卖指标',
     url: 'https://btcdash-9iwhupw6.manus.space',
     size: 'medium',
+    image: '/btc-indicator.png',
   },
   {
     title: 'BinanceLife',
-    titleZh: 'BinanceLife',
+    titleZh: '币安人生',
     url: 'https://binancelife.net/',
     size: 'medium',
+    image: '/binance-life.jpg',
+  },
+  {
+    title: 'BNB Terminal',
+    titleZh: 'BNB Terminal',
+    url: 'https://bnb-pulse-dashboard.lovable.app',
+    size: 'medium',
+    image: '/bnb-terminal.png',
+    isInternal: true,
   },
   {
     title: 'Life Reversal',
-    titleZh: '命运逆转',
+    titleZh: '人生逆袭',
     url: 'https://fate-reversal.lovable.app',
-    size: 'small',
+    size: 'medium',
+    image: '/fate-reversal.png',
   },
   {
     title: 'Voice Clone',
     titleZh: '语音克隆',
     url: '/voice-clone',
-    size: 'small',
-    isInternal: true,
-  },
-  {
-    title: 'BNB Terminal',
-    titleZh: 'BNB Terminal',
-    url: '/bnb-terminal',
     size: 'medium',
+    image: '/placeholder.svg',
     isInternal: true,
   },
 ];
@@ -66,8 +74,8 @@ const sizeClasses = {
 const ProjectGrid = () => {
   const { t } = useLanguage();
 
-  const cardClasses = `group relative bg-card/80 backdrop-blur-sm border border-border/40 rounded-2xl p-6 
-                       hover:border-primary/50 hover:bg-card hover:shadow-lg hover:shadow-primary/10 
+  const cardClasses = `group relative bg-card/80 backdrop-blur-sm border border-border/40 rounded-2xl overflow-hidden
+                       hover:border-primary/50 hover:bg-card hover:shadow-lg hover:shadow-primary/10
                        transition-all duration-300 flex flex-col justify-between`;
 
   return (
@@ -83,9 +91,16 @@ const ProjectGrid = () => {
               to={project.url}
               className={`${cardClasses} ${sizeClasses[project.size]}`}
             >
-              <span className="text-lg font-medium group-hover:text-primary transition-colors">
-                {t(project.title, project.titleZh)}
-              </span>
+              <img
+                src={project.image}
+                alt={project.title}
+                className="absolute inset-0 w-full h-full object-cover object-top transition-all duration-300 group-hover:opacity-75 group-hover:scale-110"
+              />
+              <div className="relative z-10 p-6 flex flex-col justify-end h-full bg-gradient-to-t from-black/80 via-black/40 to-transparent">
+                <span className="text-lg font-medium text-white group-hover:text-primary transition-colors">
+                  {t(project.title, project.titleZh)}
+                </span>
+              </div>
             </Link>
           ) : (
             <a
@@ -95,11 +110,18 @@ const ProjectGrid = () => {
               rel="noopener noreferrer"
               className={`${cardClasses} ${sizeClasses[project.size]}`}
             >
-              <span className="text-lg font-medium group-hover:text-primary transition-colors">
-                {t(project.title, project.titleZh)}
-              </span>
-              <ExternalLink className="w-4 h-4 text-accent opacity-0 group-hover:opacity-100 
-                                       transition-opacity absolute bottom-6 right-6" />
+              <img
+                src={project.image}
+                alt={project.title}
+                className="absolute inset-0 w-full h-full object-cover object-top transition-all duration-300 group-hover:opacity-75 group-hover:scale-110"
+              />
+              <div className="relative z-10 p-6 flex flex-col justify-end h-full bg-gradient-to-t from-black/80 via-black/40 to-transparent">
+                <span className="text-lg font-medium text-white group-hover:text-primary transition-colors">
+                  {t(project.title, project.titleZh)}
+                </span>
+              </div>
+              <ExternalLink className="w-4 h-4 text-white opacity-0 group-hover:opacity-100
+                                       transition-opacity absolute bottom-6 right-6 z-10" />
             </a>
           )
         )}
