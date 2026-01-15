@@ -24,7 +24,7 @@ const projects: Project[] = [
     titleZh: '黄金 vs 比特币',
     url: 'https://btc-vs-gold.lovable.app/',
     size: 'medium',
-    image: '/gold-vs-btc.png',
+    image: '/gold-vs-btc_1.png',
   },
   {
     title: 'BTC Buy/Sell Indicator',
@@ -46,7 +46,6 @@ const projects: Project[] = [
     url: 'https://bnb-pulse-dashboard.lovable.app',
     size: 'medium',
     image: '/bnb-terminal.png',
-    isInternal: true,
   },
   {
     title: 'Life Reversal',
@@ -60,7 +59,7 @@ const projects: Project[] = [
     titleZh: '语音克隆',
     url: '/voice-clone',
     size: 'medium',
-    image: '/placeholder.svg',
+    image: '/voice-clone.png',
     isInternal: true,
   },
 ];

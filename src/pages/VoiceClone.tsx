@@ -1,6 +1,7 @@
 import { LanguageProvider, useLanguage } from '@/hooks/useLanguage';
 import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const tweets = [
   'https://x.com/0xOliviaPp/status/2002287517010440391',
@@ -9,6 +10,20 @@ const tweets = [
 
 const VoiceCloneContent = () => {
   const { t, language, toggleLanguage } = useLanguage();
+
+  useEffect(() => {
+    // Load Twitter widgets script
+    const script = document.createElement('script');
+    script.src = 'https://platform.twitter.com/widgets.js';
+    script.async = true;
+    script.charset = 'utf-8';
+    document.body.appendChild(script);
+
+    return () => {
+      // Cleanup: remove script when component unmounts
+      document.body.removeChild(script);
+    };
+  }, []);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -50,8 +65,6 @@ const VoiceCloneContent = () => {
           ))}
         </div>
       </main>
-
-      <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
     </div>
   );
 };
