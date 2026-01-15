@@ -38,7 +38,7 @@ const projects: Project[] = [
     titleZh: '币安人生',
     url: 'https://binancelife.net/',
     size: 'medium',
-    image: '/binance-life.jpg',
+    image: '/bn-life.jpg',
   },
   {
     title: 'BNB Terminal',

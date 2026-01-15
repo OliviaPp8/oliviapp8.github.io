@@ -1,29 +1,15 @@
 import { LanguageProvider, useLanguage } from '@/hooks/useLanguage';
 import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
+import { Tweet } from 'react-tweet';
 
-const tweets = [
-  'https://x.com/0xOliviaPp/status/2002287517010440391',
-  'https://x.com/0xOliviaPp/status/2009544064929345786',
+const tweetIds = [
+  '2002287517010440391',
+  '2009544064929345786',
 ];
 
 const VoiceCloneContent = () => {
   const { t, language, toggleLanguage } = useLanguage();
-
-  useEffect(() => {
-    // Load Twitter widgets script
-    const script = document.createElement('script');
-    script.src = 'https://platform.twitter.com/widgets.js';
-    script.async = true;
-    script.charset = 'utf-8';
-    document.body.appendChild(script);
-
-    return () => {
-      // Cleanup: remove script when component unmounts
-      document.body.removeChild(script);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -53,14 +39,12 @@ const VoiceCloneContent = () => {
         </p>
 
         <div className="space-y-6">
-          {tweets.map((tweetUrl, index) => (
+          {tweetIds.map((tweetId, index) => (
             <div
               key={index}
-              className="border border-border/40 rounded-2xl overflow-hidden bg-card/50"
+              className="flex justify-center"
             >
-              <blockquote className="twitter-tweet" data-theme="dark">
-                <a href={tweetUrl}></a>
-              </blockquote>
+              <Tweet id={tweetId} />
             </div>
           ))}
         </div>
