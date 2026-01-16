@@ -65,9 +65,9 @@ const projects: Project[] = [
 ];
 
 const sizeClasses = {
-  large: 'md:col-span-2 md:row-span-2',
-  medium: 'md:col-span-1 md:row-span-2',
-  small: 'md:col-span-1 md:row-span-1',
+  large: 'aspect-[4/3] md:aspect-auto md:col-span-2 md:row-span-2',
+  medium: 'aspect-[4/3] md:aspect-auto md:col-span-1 md:row-span-2',
+  small: 'aspect-[4/3] md:aspect-auto md:col-span-1 md:row-span-1',
 };
 
 const ProjectGrid = () => {
@@ -82,7 +82,7 @@ const ProjectGrid = () => {
       <h2 className="text-2xl font-light mb-10 text-center">
         {t('Projects', '项目作品')}
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[120px]">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:auto-rows-[120px]">
         {projects.map((project, index) =>
           project.isInternal ? (
             <Link
