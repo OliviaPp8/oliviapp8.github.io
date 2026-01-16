@@ -2,6 +2,7 @@ import { LanguageProvider } from '@/hooks/useLanguage';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import ProjectGrid from '@/components/ProjectGrid';
+import PhotoGallery from '@/components/PhotoGallery';
 
 const Index = () => {
   return (
@@ -11,6 +12,7 @@ const Index = () => {
         <main>
           <Hero />
           <ProjectGrid />
+          <PhotoGallery />
         </main>
         <footer className="py-12 text-center text-sm text-muted-foreground">
           © 2025 Olivia Pan
